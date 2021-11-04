@@ -13,20 +13,11 @@ function loadProducts() {
 
             //Parcours la liste des produits
             for (let product of products) {
-
-                //création des liens produits 
-                let newLink = createLink(product);
-
-                //création de l'article
-                let newArticle = createArticle(newLink);
-
-                //création de l'image
+                
+                let newLink = createLink(product);                
+                let newArticle = createArticle(newLink);                
                 createImg(product, newArticle);
-
-                //création d'affichage des noms
-                createName(product, newArticle);
-
-                //Création de la description
+                createName(product, newArticle);                
                 createDescription(product, newArticle);
 
             }
@@ -37,32 +28,33 @@ function loadProducts() {
         });
 }
 
+//création des liens produits 
 function createLink(product) {
     let newLink = document.createElement("a");
     newLink.href = "./product.html?id=" + product._id;
     document.getElementById("items").appendChild(newLink);
     return newLink;
 }
-
+//création de l'article
 function createArticle(newLink) {
     let newArticle = document.createElement("article");
     newLink.appendChild(newArticle);
     return newArticle;
 }
-
+//création de l'image
 function createImg(product, newArticle) {
     let newImg = document.createElement("img");
     newImg.src = product.imageUrl;
     newImg.alt = product.altTxt;
     newArticle.appendChild(newImg);
 }
-
+//création d'affichage des noms
 function createName(product, newArticle) {
     let newName = document.createElement("h3");
     newName.innerText = product.name;
     newArticle.appendChild(newName);
 }
-
+//Création de la description
 function createDescription(product, newArticle) {
     let newDescription = document.createElement("p");
     newDescription.innerText = product.description;
